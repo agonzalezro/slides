@@ -1,67 +1,59 @@
-import json
-import urllib
-import webbrowser
-
-from gi.repository import Gtk, GdkPixbuf
+from gi.repository import Gtk, WebKit
 
 
-class IconView(Gtk.Window):
-    URL_IDS = ('https://api.twitter.com/1/followers/ids.json?'
-               'cursor=-1&screen_name=agonzalezro')
-    URL_LOOKUP = ('https://api.twitter.com/1/users/lookup.json?'
-                  'user_id=%s&include_entities=true')
-
+class Browser(object):
     def __init__(self):
-        super(IconView, self).__init__()
-        self.store = Gtk.ListStore(GdkPixbuf.Pixbuf, str)
-        self.icons_list = self.create_list()
-        scroll = Gtk.ScrolledWindow()
-        scroll.add(self.icons_list)
-        self.add(scroll)
-        self.show_all()
-        self.connect_signals()
-        self.resize(640, 480)
+        self.create_elements()
+        self.configure_elements()
+        self.bind_signals()
 
-    def create_list(self):
-        icons_list = Gtk.IconView()
-        icons_list.set_model(self.store)
-        icons_list.set_pixbuf_column(0)
-        icons_list.set_text_column(1)
-        return icons_list
+    def create_elements(self):
+        self.window = Gtk.Window()
+        # Toolbar
+        hbox = Gtk.HBox()
+        self.entry = Gtk.Entry()
+        self.button = Gtk.Button(stock=Gtk.STOCK_FIND)
+        hbox.pack_start(self.entry, True, True, 0)
+        hbox.pack_start(self.button, False, True, 0)
+        # Web view
+        self.view = WebKit.WebView()
+        scrolled = Gtk.ScrolledWindow()
+        scrolled.add(self.view)
+        scrolled.show()
+        # Progress
+        self.progress = Gtk.ProgressBar()
+        # All the rest
+        vbox = Gtk.VBox()
+        vbox.pack_start(hbox, False, True, 0)
+        vbox.pack_start(scrolled, True, True, 0)
+        vbox.pack_start(self.progress, False, True, 0)
+        self.window.add(vbox)
 
-    def connect_signals(self):
-        self.connect('delete-event', Gtk.main_quit)
-        self.icons_list.connect('item-activated', self.on_item_activated)
+    def configure_elements(self):
+        self.window.resize(640, 480)
+        self.window.show_all()
+        self.progress.hide()
 
-    def get_twitter_users(self, limit):
-        response = urllib.urlopen(self.URL_IDS)
-        ids = json.loads(response.read()).get('ids')
-        ids = ','.join(map(str, ids[0:limit]))  # Max 100 per query
-        response = urllib.urlopen(self.URL_LOOKUP % ids)
-        users = json.loads(response.read())
-        minimal_info = []
-        for user in users:
-            minimal_info.append((user['profile_image_url'],
-                                 '@%s' % user['screen_name']))
-        return minimal_info
+    def bind_signals(self):
+        self.window.connect('delete-event', Gtk.main_quit)
+        self.button.connect('clicked', self.on_button_clicked)
+        self.view.connect('load-progress-changed', self.on_load_progress)
 
-    def fill_buddies(self, buddies=30):
-        for user in self.get_twitter_users(buddies):
-            self.store.append([self.get_icon_from_url(user[0]),
-                               user[1]])
+    def get_full_url(self, text):
+        return text if text.startswith('http') else 'http://%s' % text
 
-    def get_icon_from_url(self, name):
-        icon = GdkPixbuf.PixbufLoader()
-        icon.set_size(48, 48)
-        icon.write(urllib.urlopen(name).read())
-        icon.close()
-        return icon.get_pixbuf()
+    def on_button_clicked(self, widget):
+        self.view.open(
+                self.get_full_url(self.entry.get_text()))
 
-    def on_item_activated(self, widget, item):
-        webbrowser.open('http://twitter.com/%s' % self.store[item][1][1:])
+    def on_load_progress(self, widget, amount):
+        self.progress.set_fraction(amount / 100.0)
+        if amount == 100 or amount == 0:
+            self.progress.hide()
+        else:
+            self.progress.show()
 
 
 if __name__ == '__main__':
-    window = IconView()
-    window.fill_buddies(50)
+    browser = Browser()
     Gtk.main()
