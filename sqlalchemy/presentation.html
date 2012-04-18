@@ -126,29 +126,9 @@ code {
 
     </style>
     <style type="text/css" media="screen, projection">
-      h1, h2, h3, h4, h5, h6, p, ul, li {
-    font-family: sans-serif !important;
-}
-
-p, ul, li {
-    color: #555753 !important;
-
-}
-
-header h1, header h2, header h3, header h4, header h5, header h6 {
-    color: #204a87 !important;
-    font-weight: bold !important;
-}
-
-section h1, section h2, section h3, section h4, section h5, section h6 {
-    color: #3465a4 !important;
-}
-
-img { display: block; margin: auto; }
-
-body {
+      body {
   font: 14px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
-  background: #555753;
+  background: #fff;
   padding: 0;
   margin: 0;
   overflow: hidden;
@@ -160,9 +140,7 @@ div.presentation {
   display: table-cell;
   vertical-align: middle;
   height: 100%;
-  background: -webkit-gradient(linear, left bottom, left top, from(#2e3436), to(#555753));
-  background-color: #555753;
-  background: -moz-linear-gradient(bottom, #555753, #2e3436);
+  background: inherit;
 }
 
 div.slides, body.expose div.slides.nocontext {
@@ -172,7 +150,9 @@ div.slides, body.expose div.slides.nocontext {
   top: 0;
   position: absolute;
   display: block;
+  background-color: #fff;
 }
+
 
 div.slides.nocontext {
   width: 900px;
@@ -184,7 +164,6 @@ div.slides.nocontext {
 }
 
 div.slide {
-  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAAICAIAAAAutqZSAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAXDAAAFwwBigKOZgAAAAd0SU1FB9oMBhYcN9mLAKQAAAB1SURBVHja7dahDYNQAEXRUkGYgB0YqCgEG6CRXaAGh/5Jk6paJCv8iVjhCeQ5I1x1m/Ig9dtbEUL1/xYhVMZVhFA3a5D61l6E0Ll9RAgdyyRC6PkaREhbSQAAgBkFAMCMAgCAGQUAwIwCAIAZBQDAjAIAwF0uR8ALUUwQdKwAAAAASUVORK5CYII=') bottom center no-repeat;
   display: none;
   position: absolute;
   overflow: hidden;
@@ -193,22 +172,25 @@ div.slide {
   left: 50%;
   top: 50%;
   margin-top: -350px;
-  background-color: #eeeeec;
+  background: -webkit-gradient(linear, left bottom, left top, from(#fff), to(#eeeeec));
+  background-color: #eee;
+  background: -moz-linear-gradient(bottom, #fff, #eeeeec);
   -webkit-transition: margin 0.25s ease-in-out;
   -moz-transition: margin 0.25s ease-in-out;
   -o-transition: margin 0.25s ease-in-out;
-  border-top-left-radius: 20px;
-  -moz-border-radius-topleft: 20px;
-  -webkit-border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   -moz-border-radius-topright: 20px;
   -webkit-border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  -webkit-border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  border-top-left-radius: 20px;
+  -moz-border-radius-topleft: 20px;
+  -webkit-border-top-left-radius: 20px;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+
 }
 
 div.slide p {
@@ -262,6 +244,11 @@ header:not(:only-child) {
   top: 25px;
   margin: 0;
   padding: 0;
+}
+
+header:only-child > h1 {
+  color: black !important;
+  font-weight: bold;
 }
 
 header h1, header h2, header h3, header h4, header h5, header h6 {
@@ -433,6 +420,8 @@ aside {
     font-size: 90%;
 }
 
+img { display: block; margin: auto; }
+
 /* Expose */
 
 body.expose div.slides {
@@ -458,6 +447,9 @@ body.expose div.slide {
   -webkit-transform-origin: 0 0;
   -o-transform: scale(.33, .33);
   -o-transform-origin: 0 0;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
   cursor: pointer;
 }
 
