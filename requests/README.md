@@ -27,9 +27,9 @@ Examples
 --------
 
 - `example1.py`: it shows how to use request to perform a GET that consums
-  from the Google Images API
+  from the Google Images API.
 - `example2.py`: it posts to the API (`examples/api.py`) with different
-  headers and data
+  headers and data.
 - `example3.py`: it shows how to use requests and request-oauth to keep a socket
   to the twitter streaming API open.
 
