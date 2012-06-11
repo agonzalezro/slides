@@ -1,15 +1,11 @@
-import json
 import requests
+import settings
 
 from flask import Flask, request, jsonify
 from oauth_hook import OAuthHook
 
 
 app = Flask(__name__)
-consumer_key = None
-consumer_secret = None
-access_token = None
-access_token_secret = None
 
 
 def get_fon_url(url):
@@ -20,8 +16,8 @@ def get_fon_url(url):
 
 
 def post_to_twitter(url):
-    hook = OAuthHook(access_token, access_token_secret,
-                     consumer_key, consumer_secret)
+    hook = OAuthHook(settings.ACCESS_TOKEN, settings.ACCESS_TOKEN_SECRET,
+                     settings.CONSUMER_KEY, settings.CONSUMER_SECRET)
     client = requests.session(hooks={'pre_request': hook})
     status = 'Pygrunn #5 example: {url}'.format(url=url)
     response = client.post('http://api.twitter.com/1/statuses/update.json',
