@@ -8,6 +8,7 @@ import webbrowser
 
 url = 'https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=pygrunn'
 
+
 def get_random_image():
     response = requests.get(url)
     images = json.loads(response.content)['responseData']['results']
