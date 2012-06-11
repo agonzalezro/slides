@@ -8,7 +8,7 @@ monthly meeting #5.
 Usage
 -----
 
-    mkvirtualenv slide
+    mkvirtualenv slides
     pip install -r requeriments.txt
 
 
