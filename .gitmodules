@@ -1,0 +1,3 @@
+[submodule "thrift/shower"]
+	path = thrift/shower
+	url = https://github.com/shower/shower.git

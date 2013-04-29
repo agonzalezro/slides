@@ -1,0 +1,22 @@
+auto: true
+safe: true
+server: true
+markdown: kramdown
+pygments: true
+permalink: /:title.html
+exclude: [shower,themes]
+
+default_theme: ../shower/themes/bright
+default_width: 680
+default_lang: en
+default_body_class: list
+
+author:
+    name: Álex González
+    url: http://agonzalezro.github.com
+    company:
+        name: GreenManGaming
+        url: http://greenmangaming.com/
+
+fork_url: https://github.com/agonzalezro/slides
+progress: true
