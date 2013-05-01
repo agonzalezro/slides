@@ -3,7 +3,7 @@
 
 <html lang="en">
 <head>
-	<title>Python &amp; Scala smokethe peace pipe</title>
+	<title>Python &amp; Scala smoke  the peace pipe</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=680, user-scalable=no">
 	<link rel="stylesheet" href="themes/../shower/themes/bright/styles/screen.css">
@@ -16,15 +16,17 @@
 </head>
 <body class="list">
 	<header class="caption">
-		<h1>Python &amp; Scala smoke<br />the peace pipe</h1>
-		<p><a href="http://agonzalezro.github.com">Álex González</a>, <a href="http://greenmangaming.com/">GreenManGaming</a></p>
+		<h1>Python &amp; Scala smoke <br /> the peace pipe</h1>
+		<p><a href="http://agonzalezro.github.io">Álex González</a>, <a href="http://greenmangaming.com/">GreenManGaming</a></p>
 
 	</header>
 
-	<section id="cover" class="slide cover"><div><h2>Python &amp; Scala smoke<br />the peace pipe</h2>
+	<section id="cover" class="slide cover"><div><h2>Python &amp; Scala smoke <br /> the peace pipe</h2>
+
+<footer>Thanks for the image: http://www.schulbilder.org/malvorlage-friedenspfeife-i18756.html</footer>
 
 </div></section>
-<section class="slide shout" id="howbrbrthrift"><div><h2>How?<br /><br />Thrift!</h2>
+<section class="slide shout" id="howbrbrthrift"><div><h2>how?<br /><br />Thrift!</h2>
 
 </div></section>
 <section class="slide" id="nbsp"><div><h2>&nbsp;</h2>
@@ -32,6 +34,7 @@
 <p>Transparent, high-performance bridge across many programmming languages.</p>
 
 <ul>
+  <li>Types</li>
   <li>Transport</li>
   <li class="next">Protocol</li>
   <li class="next">Versioning</li>
@@ -39,12 +42,12 @@
 </ul>
 
 </div></section>
-<section class="slide shout" id="types"><div><h2>Types</h2>
+<section class="slide shout" id="types"><div><h2>types</h2>
 
 <footer>The developer doesn&#8217;t need to learn another rocket science language for objects serialization or transport.</footer>
 
 </div></section>
-<section class="slide" id="base-types"><div><h2>Base types</h2>
+<section class="slide" id="nbsp-1"><div><h2>&nbsp;</h2>
 
 <ul>
   <li><code>bool</code></li>
@@ -59,21 +62,110 @@
 </div></section>
 <section class="slide" id="structs"><div><h2>Structs</h2>
 
-<pre><code><mark class="important">struct</mark> Example {</code><code>  1:i32 number=10,</code><code>  2:i64 bigNumber,</code><code>  3:double decimals,</code><code>  4:string name="thrifty"</code><code>}</code></pre>
+<pre><code><mark class="important">struct</mark> TypesExample {</code><code>  1: i32 number=10,</code><code>  2: i64 bigNumber,</code><code>  3: double decimals,</code><code>  4: string name="thrifty"</code><code>}</code></pre>
 
 </div></section>
 <section class="slide" id="containers"><div><h2>Containers</h2>
 
+<ul>
+  <li><code>list &lt;type&gt;</code> is an ordered list of elements.</li>
+  <li><code>set &lt;type&gt;</code> is a unordered set of unique elements.</li>
+  <li><code>map &lt;type1, type2&gt;</code> unique keys to values (<code>dict</code> in python).</li>
+</ul>
+
 </div></section>
 <section class="slide" id="exceptions"><div><h2>Exceptions</h2>
 
+<p>Like an struct but declared with the exception keyword:</p>
+
+<pre><code><mark class="important">exception</mark> IAmNotLearningAnythingException {</code><code>  1: string message;</code><code>}</code></pre>
+
 </div></section>
 <section class="slide" id="services"><div><h2>Services</h2>
+
+<pre><code><mark class="important">service</mark> amazingScalaMethod {</code><code>    string <mark class="important">getHelloWorld</mark>(</code><code>        1: string worldName;</code><code>    ) throws (</code><code>        1: WorldNotFound wnfe;</code><code>    )</code><code>}</code></pre>
+
+<footer>As we say in Spain, the <strong>chicha</strong>.</footer>
+
+</div></section>
+<section class="slide shout" id="versioning"><div><h2>versioning</h2>
+
+<footer>Needed to read old data from log files or just accept request from out-of-data clients.</footer>
+
+</div></section>
+<section class="slide" id="nbsp-2"><div><h2>&nbsp;</h2>
+
+<p>Field identifiers:</p>
+
+<pre><code>struct Example {</code><code>    1: i32 yourLovelyAttrib</code><code>    i32 youDoNotLikeThis</code><code>}</code></pre>
+
+<footer>Can also be used on the function arguments.</footer>
+
+</div></section>
+<section class="slide" id="possibilities-adding-field"><div><h2>Possibilities: adding field</h2>
+
+<h3 id="new-server-but-old-client">new server but old client,</h3>
+
+<p>the new server will know that the client is outdated &amp; implement default behaviour for outdated requests.</p>
+
+<h3 id="new-client-but-old-server">new client but old server,</h3>
+
+<p>the old server will ignore the extra field.</p>
+
+</div></section>
+<section class="slide" id="possibilities-removing-a-field"><div><h2>Possibilities: removing a field</h2>
+
+<h3 id="new-server-but-old-client-1">new server but old client,</h3>
+
+<p>the old client send the field and the new server will ignore it.</p>
+
+<h3 id="new-client-but-old-server-markthe-most-dangerousmark">new client but old server <mark>(the most dangerous)</mark>,</h3>
+
+<p>no suitable default behaviour. The recommendation is deploy the new server before the new clients.</p>
+
+</div></section>
+<section class="slide" id="transport-layer"><div><h2>Transport Layer</h2>
+
+<p>If you really need that, you can do that overwritting the <code>writeMessageBegin()</code> for example sending the checksum of your data.</p>
+
+</div></section>
+<section class="slide" id="similar-things-out-there"><div><h2>Similar things out there</h2>
+
+<ul>
+  <li>SOAP</li>
+  <li>CORBA</li>
+  <li>COM</li>
+  <li>Pillar</li>
+  <li>Protocol buffers</li>
+</ul>
+
+</div></section>
+<section class="slide shout" id="demo"><div><h2>demo</h2>
+
+</div></section>
+<section class="slide" id="thanks"><div><h2>Thanks!</h2>
+
+<ul>
+  <li>You for hearing!</li>
+  <li>PyGrunn for bring me!</li>
+  <li><a href="http://thrift.apache.org/static/files/thrift-20070401.pdf">This paper for the references!</a></li>
+</ul>
+
+</div></section>
+<section class="slide" id="contact-me"><div><h2>Contact me</h2>
+
+<ul>
+  <li><a href="http://twitter.com/agonzalezro">@agonzalezro</a></li>
+  <li><a href="&#109;&#097;&#105;&#108;&#116;&#111;:&#047;&#047;&#097;&#103;&#111;&#110;&#122;&#097;&#108;&#101;&#122;&#114;&#111;&#064;&#103;&#109;&#097;&#105;&#108;&#046;&#099;&#111;&#109;">agonzalezro@gmail.com</a></li>
+  <li><a href="http://agonzalezro.github.io">agonzalezro.github.io</a></li>
+</ul>
+
+<footer>Just showing a little bit example communicating python and Scala.</footer>
 </div></section>
 
 	<p class="badge"><a href="https://github.com/agonzalezro/slides">Fork me on Github</a></p>
 	<div class="progress"><div></div></div>
 	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2013 Álex González — http://agonzalezro.github.com, GreenManGaming — http://greenmangaming.com/ -->
+	<!-- Copyright © 2013 Álex González — http://agonzalezro.github.io, GreenManGaming — http://greenmangaming.com/ -->
 </body>
 </html>
