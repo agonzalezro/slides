@@ -8,6 +8,16 @@ style: |
       background: url('pictures/pipe.png') 75% 85% no-repeat white;
     }
 
+    #thanks {
+      background: url('pictures/playfire.png') 87% 42% no-repeat white;
+      background-size: 50%;
+    }
+
+    #contact {
+      background: url('pictures/gmg.png') 87% 38% no-repeat white;
+      background-size: 50%;
+    }
+
 ---
 
 # Python & Scala smoke <br> the peace pipe {#cover}
@@ -17,15 +27,18 @@ style: |
 
 ## **how?<br><br>Thrift!**
 
+// The Thrift IDL: **I**nterface **D**efinition **L**anguage
+
+
 ## &nbsp;
 
-Transparent, high-performance bridge across many programmming languages.
-
 - Types
-- Transport
+- …Transport
 - …Protocol
 - …Versioning
 - …Processors
+
+// Transparent, high-performance bridge across many programmming languages.
 
 
 ## **types**
@@ -126,18 +139,20 @@ If you really need that, you can do that overwritting the `writeMessageBegin()` 
 - Pillar
 - Protocol buffers
 
+
 ## **demo**
 
-## Thanks!
+// Just showing a little bit example communicating python and Scala.
 
-- You for hearing!
-- PyGrunn for bring me!
-- [This paper for the references!](http://thrift.apache.org/static/files/thrift-20070401.pdf)
 
-## Contact me
+## Thanks! {#thanks}
+
+- for listening!
+- PyGrunn for bringing me!
+- [this FB paper!](http://thrift.apache.org/static/files/thrift-20070401.pdf)
+
+## Contact me {#contact}
 
 - [@agonzalezro](http://twitter.com/agonzalezro)
 - [agonzalezro@gmail.com](mailto://agonzalezro@gmail.com)
 - [agonzalezro.github.io](http://agonzalezro.github.io)
-
-// Just showing a little bit example communicating python and Scala.
