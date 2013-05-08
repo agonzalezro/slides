@@ -27,7 +27,7 @@ style: |
 
 ## **how?<br><br>Thrift!**
 
-// The Thrift IDL: **I**nterface **D**efinition **L**anguage
+// The Thrift IDL: **I**nterface **D**efinition **L**anguage. Full stack RPC.
 
 
 ## &nbsp;
@@ -41,17 +41,19 @@ style: |
 // Transparent, high-performance bridge across many programmming languages.
 
 
+
+
 ## **types**
 
 // The developer doesn't need to learn another rocket science language for objects serialization or transport.
 
-## &nbsp;
+## Basic
 
 - `bool`
 - `byte`
-- `i16`, signed
-- `i32`, signed
-- `i64`, signed
+- `i16`, signed.
+- `i32`, signed.
+- `i64`, signed.
 - `double`
 - `string`
 
@@ -91,13 +93,49 @@ Like an struct but declared with the exception keyword:
 // As we say in Spain, the **chicha**.
 
 
-## **versioning**
 
-// Needed to read old data from log files or just accept request from out-of-data clients.
+
+## **transport**
 
 ## &nbsp;
 
-Field identifiers:
+- `TFileTransport`, use files.
+- …`TFramedTransport`, for non-blocking servers: frames starting with length at the beginning.
+- …`TMemoryTransport`, user memory for I/O.
+- …`TSocket`, blocking socket.
+- …`TZlibTransport`, compressed transport.
+
+// Usually it's used over TCP/IP.
+
+## Is not enough?
+
+If you really need that, you can do that overwritting the `writeMessageBegin()`
+for example sending the checksum of your data.
+
+
+
+
+## **protocol**
+
+## &nbsp;
+
+- `TBinaryProtocol`, quicker than text protocols but less debuggable.
+- …`TCompactProtocol` & `TDenseProtocol`, compact binary without & with metadata.
+- …`TDebugProtocol`, human readable.
+- …`TJSONProtocol` & `TSimpleJSONProtocol`, xml? :) SimpleJSON is WO.
+
+
+
+
+## **versioning**
+
+// Needed to read old data from log files or just accept request from
+out-of-data clients.
+
+## &nbsp;
+
+Field identifiers (it's better to provide them, if not will be autonumeric
+negative number):
 
     struct Example {
         1: i32 yourLovelyAttrib
@@ -110,7 +148,8 @@ Field identifiers:
 
 ### new server but old client,
 
-the new server will know that the client is outdated & implement default behaviour for outdated requests.
+the new server will know that the client is outdated & implement default
+behaviour for outdated requests.
 
 ### new client but old server,
 
@@ -124,12 +163,20 @@ the old client send the field and the new server will ignore it.
 
 ### new client but old server <mark>(the most dangerous)</mark>,
 
-no suitable default behaviour. The recommendation is deploy the new server before the new clients.
+no suitable default behaviour. The recommendation is deploy the new server
+before the new clients.
 
-## Transport Layer
 
-If you really need that, you can do that overwritting the `writeMessageBegin()` for example sending the checksum of your data.
 
+
+## **processors**
+
+## &nbsp;
+
+    interface <mark class="important">TProcessor</mark> {
+        bool process(TProtocol in, TProtocol out)
+          throws TException
+    }
 
 ## Similar things out there
 
@@ -140,9 +187,13 @@ If you really need that, you can do that overwritting the `writeMessageBegin()` 
 - Protocol buffers
 
 
+
+
 ## **demo**
 
 // Just showing a little bit example communicating python and Scala.
+
+
 
 
 ## Thanks! {#thanks}
@@ -150,6 +201,9 @@ If you really need that, you can do that overwritting the `writeMessageBegin()` 
 - for listening!
 - PyGrunn for bringing me!
 - [this FB paper!](http://thrift.apache.org/static/files/thrift-20070401.pdf)
+
+
+
 
 ## Contact me {#contact}
 

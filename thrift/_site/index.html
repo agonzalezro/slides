@@ -38,7 +38,7 @@
 </div></section>
 <section class="slide shout" id="howbrbrthrift"><div><h2>how?<br /><br />Thrift!</h2>
 
-<footer>The Thrift IDL: <strong>I</strong>nterface <strong>D</strong>efinition <strong>L</strong>anguage</footer>
+<footer>The Thrift IDL: <strong>I</strong>nterface <strong>D</strong>efinition <strong>L</strong>anguage. Full stack RPC.</footer>
 
 </div></section>
 <section class="slide" id="nbsp"><div><h2>&nbsp;</h2>
@@ -59,14 +59,14 @@
 <footer>The developer doesn&#8217;t need to learn another rocket science language for objects serialization or transport.</footer>
 
 </div></section>
-<section class="slide" id="nbsp-1"><div><h2>&nbsp;</h2>
+<section class="slide" id="basic"><div><h2>Basic</h2>
 
 <ul>
   <li><code>bool</code></li>
   <li><code>byte</code></li>
-  <li><code>i16</code>, signed</li>
-  <li><code>i32</code>, signed</li>
-  <li><code>i64</code>, signed</li>
+  <li><code>i16</code>, signed.</li>
+  <li><code>i32</code>, signed.</li>
+  <li><code>i64</code>, signed.</li>
   <li><code>double</code></li>
   <li><code>string</code></li>
 </ul>
@@ -100,14 +100,51 @@
 <footer>As we say in Spain, the <strong>chicha</strong>.</footer>
 
 </div></section>
-<section class="slide shout" id="versioning"><div><h2>versioning</h2>
+<section class="slide shout" id="transport"><div><h2>transport</h2>
 
-<footer>Needed to read old data from log files or just accept request from out-of-data clients.</footer>
+</div></section>
+<section class="slide" id="nbsp-1"><div><h2>&nbsp;</h2>
+
+<ul>
+  <li><code>TFileTransport</code>, use files.</li>
+  <li class="next"><code>TFramedTransport</code>, for non-blocking servers: frames starting with length at the beginning.</li>
+  <li class="next"><code>TMemoryTransport</code>, user memory for I/O.</li>
+  <li class="next"><code>TSocket</code>, blocking socket.</li>
+  <li class="next"><code>TZlibTransport</code>, compressed transport.</li>
+</ul>
+
+<footer>Usually it&#8217;s used over TCP/IP.</footer>
+
+</div></section>
+<section class="slide" id="is-not-enough"><div><h2>Is not enough?</h2>
+
+<p>If you really need that, you can do that overwritting the <code>writeMessageBegin()</code>
+for example sending the checksum of your data.</p>
+
+</div></section>
+<section class="slide shout" id="protocol"><div><h2>protocol</h2>
 
 </div></section>
 <section class="slide" id="nbsp-2"><div><h2>&nbsp;</h2>
 
-<p>Field identifiers:</p>
+<ul>
+  <li><code>TBinaryProtocol</code>, quicker than text protocols but less debuggable.</li>
+  <li class="next"><code>TCompactProtocol</code> &amp; <code>TDenseProtocol</code>, compact binary without &amp; with metadata.</li>
+  <li class="next"><code>TDebugProtocol</code>, human readable.</li>
+  <li class="next"><code>TJSONProtocol</code> &amp; <code>TSimpleJSONProtocol</code>, xml? :) SimpleJSON is WO.</li>
+</ul>
+
+</div></section>
+<section class="slide shout" id="versioning"><div><h2>versioning</h2>
+
+<footer>Needed to read old data from log files or just accept request from
+out-of-data clients.</footer>
+
+</div></section>
+<section class="slide" id="nbsp-3"><div><h2>&nbsp;</h2>
+
+<p>Field identifiers (it&#8217;s better to provide them, if not will be autonumeric
+negative number):</p>
 
 <pre><code>struct Example {</code><code>    1: i32 yourLovelyAttrib</code><code>    i32 youDoNotLikeThis</code><code>}</code></pre>
 
@@ -118,7 +155,8 @@
 
 <h3 id="new-server-but-old-client">new server but old client,</h3>
 
-<p>the new server will know that the client is outdated &amp; implement default behaviour for outdated requests.</p>
+<p>the new server will know that the client is outdated &amp; implement default
+behaviour for outdated requests.</p>
 
 <h3 id="new-client-but-old-server">new client but old server,</h3>
 
@@ -133,12 +171,16 @@
 
 <h3 id="new-client-but-old-server-markthe-most-dangerousmark">new client but old server <mark>(the most dangerous)</mark>,</h3>
 
-<p>no suitable default behaviour. The recommendation is deploy the new server before the new clients.</p>
+<p>no suitable default behaviour. The recommendation is deploy the new server
+before the new clients.</p>
 
 </div></section>
-<section class="slide" id="transport-layer"><div><h2>Transport Layer</h2>
+<section class="slide shout" id="processors"><div><h2>processors</h2>
 
-<p>If you really need that, you can do that overwritting the <code>writeMessageBegin()</code> for example sending the checksum of your data.</p>
+</div></section>
+<section class="slide" id="nbsp-4"><div><h2>&nbsp;</h2>
+
+<pre><code>interface <mark class="important">TProcessor</mark> {</code><code>    bool process(TProtocol in, TProtocol out)</code><code>      throws TException</code><code>}</code></pre>
 
 </div></section>
 <section class="slide" id="similar-things-out-there"><div><h2>Similar things out there</h2>
