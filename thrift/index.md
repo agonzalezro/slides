@@ -18,6 +18,10 @@ style: |
       background-size: 50%;
     }
 
+    #architecture {
+      background-color: white;
+    }
+
 ---
 
 # Python & Scala smoke <br> the peace pipe {#cover}
@@ -177,6 +181,17 @@ before the new clients.
         bool process(TProtocol in, TProtocol out)
           throws TException
     }
+
+
+
+## **summarizing**
+
+## &nbsp;
+{:.cover .h #architecture}
+
+![Architecture of thrift](pictures/architecture.png)
+
+
 
 ## Similar things out there
 
