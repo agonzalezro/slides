@@ -3,4 +3,4 @@
 	url = https://github.com/shower/shower.git
 [submodule "thrift/demo"]
 	path = thrift/demo
-	url = https://github.com/AhmedSoliman/thriftest.git
+	url = https://github.com/agonzalezro/thriftest.git
