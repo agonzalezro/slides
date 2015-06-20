@@ -1,0 +1,8 @@
+{
+  "transition": "slide",
+  "transitionSpeed": true,
+  "mouseWheel": true,
+  "touch": true,
+  "progress": true,
+  "controls": false
+}
