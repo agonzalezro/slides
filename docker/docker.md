@@ -20,6 +20,10 @@ What is it?
 
 ---
 
+![](images/gifs/1.gif)
+
+---
+
 VM model
 --------
 
@@ -46,20 +50,8 @@ Advantages
 
 ---
 
-Docker hub
-==========
-
-> "Browse, Search, Push, Pull Repositories"
-
 images vs containers
---------------------
-
----
-
-docker login/logout
--------------------
-
-Just needed first time
+====================
 
 ---
 
@@ -138,8 +130,10 @@ Dockerfiles
 
 ---
 
-Shopa examples :)
------------------
+Shopa examples!
+---------------
+
+![](images/gifs/2.gif)
 
 ---
 
@@ -162,8 +156,24 @@ docker-compose
 
 ---
 
-Shopa examples :)
------------------
+Moarrr shopa examples
+---------------------
+
+![](images/gifs/3.gif)
+
+---
+
+Docker hub
+==========
+
+> "Browse, Search, Push, Pull Repositories"
+
+---
+
+docker login/logout
+-------------------
+
+Just needed first time
 
 ---
 
