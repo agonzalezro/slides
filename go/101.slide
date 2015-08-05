@@ -90,6 +90,10 @@ Key/value storage.
 
 .play examples/type_casting.go /^func output/,
 
+* The good one about interfaces!
+
+.play examples/interfaces1.go /^type/,
+
 * Concurrency
 
 .play examples/concurrency1.go /^func main/,
