@@ -1,3 +1,5 @@
+Tl;DR; https://speakerdeck.com/agonzalezro/docker-workshop-for-shopa
+
 You need to choose, there is a red pill:
 
     npm install -g reveal-md
