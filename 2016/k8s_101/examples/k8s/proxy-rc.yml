@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: proxy-rc
+spec:
+  selector:
+    name: proxy
+  template:
+    metadata:
+      labels:
+        name: proxy
+    spec:
+      containers:
+      - name: whatever
+        image: agonzalezro/proxy
+        command: ["./proxy", "http://hello-service"]
+        ports:
+        - containerPort: 8080

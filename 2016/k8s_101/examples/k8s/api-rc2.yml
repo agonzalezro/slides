@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc-2
+spec:
+  selector:
+    name: api
+    version: v2
+  template:
+    metadata:
+      labels:
+        name: api
+        version: v2
+    spec:
+      containers:
+      - name: whatever
+        image: agonzalezro/hello:2
+        ports:
+        - containerPort: 8080
