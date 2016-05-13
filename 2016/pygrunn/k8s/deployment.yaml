@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1 
+kind: Deployment
+metadata:
+  name: pygrunn-deploy
+  labels:
+    name: pygrunn-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: flask-app
+  template:
+    metadata:
+      labels:
+        name: flask-app
+    spec:
+      containers:
+      - name: app
+        image: agonzalezro/pygrunn:grumpy
+        ports:
+          - containerPort: 5000
+      - name: nginx
+        image: agonzalezro/pygrunn-nginx
+        ports:
+          - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
