@@ -1,0 +1,128 @@
+Go workshop 🔧
+October 2017
+
+Álex González, BBVA's PAAS team
+alexandre.gonzalez@bbva.com
+http://agonzalezro.github.io
+@agonzalezro
+
+* Some history
+
+- Designed by: Robert Griesemer, Rob Pike & Ken Thompson
+- 7+ years ago
+- At Google
+- To improve C++ & because they hated it
+
+* Why Go?
+
+- Asynchronous concurrency as part of the language
+- Compiled to a single binary
+- Garbage collected
+- Fast ⚡️
+- Go tools!
+- In PAAS because almost everything we use is written in Go
+
+* Why NOT Go?
+
+- Libraries not always as mature, but improving!
+- No generics... is that a real problem?
+- Dependency management
+- `GOPATH` 😬
+
+* Your first program
+
+.play examples/hi_world.go
+
+* Hands on!
+
+.image images/boring.gif
+
+* types
+
+- `{u,}int{,8,16,32,64}`
+- `float{32,64}`
+- `complex{64,128}`
+- `bool`
+- `byte`
+- `rune`
+"Code point" in Unicode (item represented by a single value).
+
+- `string`
+
+* More types
+
+- `arrays`
+An array type definition specifies a length and an element type.
+
+- `slices`
+A slice is a data structure describing a contiguous section of an array stored separately from the slice variable itself. A slice is not an array. A slice describes a piece of an array.
+
+- `maps`
+Key/value storage.
+
+* Moarrrrr types
+
+- `structs`
+.play examples/structs.go /^type/,
+
+- `pointers`
+- `functions`
+- `interfaces`
+
+* THE Type
+
+- `chan`
+"A channel can be imagined to be a pipe or a conveyer belt of a defined size and capacity. On one side one can place an item onto this imaginary conveyer belt and on the other side one can take it."
+
+* Let's the magic begin
+
+.image images/magic.gif
+
+* GOPATH 😭
+
+* Your second program
+
+.play examples/hi_world_2.go
+
+* Named errors
+
+.play examples/errors1.go /^var/,
+
+* JSON
+
+.play examples/json1.go /^type/,
+
+* Type switch
+
+.play examples/type_casting.go /^func output/,
+
+* The good one about interfaces!
+
+.play examples/interfaces1.go /^type/,
+
+* Concurrency
+
+.play examples/concurrency1.go /^func main/,
+
+* ... patterns
+
+.play examples/concurrency2.go /^func doit/,
+
+* ... and more patterns
+
+.play examples/concurrency3.go /^func main/,
+
+* OMG
+
+.image images/captain.gif
+
+* Channels
+
+.play examples/channels1.go /START OMIT/,/END OMIT/
+
+
+* Your own server
+
+.play examples/server.go /^var/,
+
+* Your own bot 🤖
