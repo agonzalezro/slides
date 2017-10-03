@@ -1,0 +1,31 @@
+{
+	"id": "0355bf6d-7e38-4ca3-855d-851a91d1fa92",
+	"timestamp": "2017-10-01T17:48:56.051Z",
+	"lang": "en",
+	"result": {
+		"source": "agent",
+		"resolvedQuery": "My name is Alex",
+		"action": "",
+		"actionIncomplete": false,
+		"parameters": {
+			"given-name": "Alex"
+		},
+		"contexts": [],
+		"metadata": {
+			"intentId": "50c46a77-f66c-46dc-b167-d4a2906c1bc2",
+			"webhookUsed": "false",
+			"webhookForSlotFillingUsed": "false",
+			"intentName": "My name is Alex"
+		},
+		"fulfillment": {
+			"speech": "",
+			"messages": []
+		},
+		"score": 1
+	},
+	"status": {
+		"code": 200,
+		"errorType": "success"
+	},
+	"sessionId": "680ef366-3c9f-4ff2-83c9-25d106b2bdd7"
+}

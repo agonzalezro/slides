@@ -1,0 +1,6 @@
+package: github.com/agonzalezro/apiai-workshop-test
+import:
+- package: github.com/gorilla/mux
+  version: ~1.5.0
+- package: github.com/stretchr/testify
+  version: ~1.1.4
