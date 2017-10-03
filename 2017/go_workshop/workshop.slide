@@ -84,17 +84,9 @@ Key/value storage.
 
 .play examples/hi_world_2.go
 
-* Named errors
-
-.play examples/errors1.go /^var/,
-
 * JSON
 
 .play examples/json1.go /^type/,
-
-* Type switch
-
-.play examples/type_casting.go /^func output/,
 
 * The good one about interfaces!
 
@@ -120,9 +112,16 @@ Key/value storage.
 
 .play examples/channels1.go /START OMIT/,/END OMIT/
 
-
 * Your own server
 
 .play examples/server.go /^var/,
 
 * Your own bot 🤖
+
+* Named errors
+
+.play examples/errors1.go /^var/,
+
+* Type switch
+
+.play examples/type_casting.go /^func output/,
