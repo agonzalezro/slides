@@ -5,6 +5,7 @@ import "fmt"
 type Developer interface { // HL
 	LikesDevelopment() bool // HL
 }
+
 type (
 	GoodDev      struct{}
 	MercenaryDev struct{}
